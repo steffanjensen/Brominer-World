@@ -5,6 +5,7 @@
 
 var Game = {};
 
+
 Game.init = function(){
     game.stage.disableVisibilityChange = true;
 };
@@ -36,6 +37,7 @@ Game.getCoordinates = function(layer,pointer){
 
 Game.addNewPlayer = function(id,x,y){
     Game.playerMap[id] = game.add.sprite(x,y,'sprite');
+    
 };
 
 Game.movePlayer = function(id,x,y){
@@ -45,9 +47,20 @@ Game.movePlayer = function(id,x,y){
     var duration = distance*10;
     tween.to({x:x,y:y}, duration);
     tween.start();
+    var playername = "steffan";
+    var points = 10;
+    document.getElementById("playername").innerHTML = playername;
+    document.getElementById("points").innerHTML = points;
+    game.add.text(x,y,playername);
+};
+function othername() {
+    var input = document.getElementById("userInput").value;
+    game.add.text(x,y,input);
+    alert(input);
 };
 
 Game.removePlayer = function(id){
     Game.playerMap[id].destroy();
     delete Game.playerMap[id];
+
 };
